@@ -1,0 +1,36 @@
+{% extends 'userUpload/base.html' %}
+
+{% block content %}
+
+  {% block content_header %}
+    <h2>Visitors</h2>
+    <p>
+      <a class="btn btn-primary">Upload Visitor</a>
+    </p>
+  {% endblock %}
+
+  <table class="table mb-0">
+    <thead>
+      <tr>
+        <th>Image</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for visitor in visitors %}
+        <tr>
+          <td>
+            {% if visitor.the_image %}
+              <img src="{{ visitor.the_image.url }}" alt="{{ book.title }}" style="width:100px;">
+            {% else %}
+              <span class="text-muted">No image</span>
+            {% endif %}
+          </td>
+          <td>{{ visitor.first_name }}</td>
+          <td>{{ visitor.last_name }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
